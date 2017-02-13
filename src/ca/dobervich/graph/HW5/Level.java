@@ -94,6 +94,14 @@ public class Level implements Serializable {
 			items.add(item);
 		}
 		
+		public Room getRandomNeighbor() {
+			List<String> keys =
+					new ArrayList<String>(neighbors.keys());
+			String randomKey = keys.get((int)(Math.random()*keys.size());
+					Room randomValue = neighbors.get(randomKey);
+
+		}
+		
 		public Item removeItem(String itemName) {
 			for (int i = 0; i < items.size(); i++) {
 				Item item = items.get(i);
