@@ -11,9 +11,48 @@ import java.util.HashMap;
 import java.util.List;
 
 import ca.dobervich.graph.HW5.Level.Room;
+import ca.vanzeben.game.entities.Entity;
 
 public class Level implements Serializable {
 	private HashMap<String, Room> nodes;
+	private ArrayList<Entity> MovingEntities; //create list to contain moving entities
+	
+	MovingEntities = new ArrayList<Entity>();
+	
+	public void tick() {
+		for(MovingEntity e: MovingEntities) { 
+		e.tick();
+		
+		}
+	}
+
+	
+	//Adds enemies
+	public void addMe(MovingEntity e){ 
+		MovingEntities.add(e); //create list to contain moving entities
+	}
+	
+	//Removes Enemies
+	public void remove(MovingEntity e) {
+		MovingEntities.remove(e);
+	}
+	
+	
+	//get a list of who’s in the room
+	public String[] EntitiesInRoom(MovingEntities) {
+		String[] RoomContains = new String[];
+		
+	//loop through array list and print all  moving entities
+		for(int i = 0; i < MovingEntities.size(); i++ ) {
+			RoomContains[i] += MovingEntity.get(i);	
+			}
+		return RoomContains;
+	}
+	
+	//checking if a particular enemy is there
+	public boolean isThere() {
+		
+	}
 
 	public Level() {
 		nodes = new HashMap<String, Room>();
@@ -83,25 +122,25 @@ public class Level implements Serializable {
 		private String name;
 		private String description;
 		private List<Item> items;
-		
+
 		private Room(String name) {
 			neighbors = new HashMap<String, Room>();
 			items = new ArrayList<Item>();
 			this.name = name;
+
 		}
-		
+
 		public void addItem(Item item) {
 			items.add(item);
 		}
-		
+
 		public Room getRandomNeighbor() {
-			List<String> keys =
-					new ArrayList<String>(neighbors.keys());
-			String randomKey = keys.get((int)(Math.random()*keys.size());
-					Room randomValue = neighbors.get(randomKey);
+			List<String> keys = new ArrayList<String>(neighbors.keys());
+			String randomKey = keys.get((int) (Math.random() * keys.size()));
+			Room randomValue = neighbors.get(randomKey);
 
 		}
-		
+
 		public Item removeItem(String itemName) {
 			for (int i = 0; i < items.size(); i++) {
 				Item item = items.get(i);
@@ -109,16 +148,16 @@ public class Level implements Serializable {
 					return items.remove(i);
 				}
 			}
-			
+
 			return null;
 		}
-		
+
 		public String getItemDisplayList() {
 			String str = "";
 			for (Item item : items) {
-				str += item.getName() + " "; 
+				str += item.getName() + " ";
 			}
-			
+
 			return str;
 		}
 
