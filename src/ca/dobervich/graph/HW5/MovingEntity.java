@@ -11,5 +11,9 @@ public abstract class MovingEntity extends Entity{
 		// move to the neighbor
 	}
 	
+	public void tick() {
+		move();
+	}
+	
 	
 }
