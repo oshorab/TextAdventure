@@ -92,12 +92,17 @@ public class Main {
 			} else if (words[0].equals("quit")) {
 				System.out.println("Goodbye!");
 				System.exit(0);
-			} else {
+			}
+			else {
+			}
+			
+				Level.tick();
 				displayCommands();
 			}
 
-		} while (!response.equals("quit"));
-	}
+		}while(!response.equals("quit"));
+
+}
 
 	private static void displayCommands() {
 		System.out.println("Commands you can type are:");
